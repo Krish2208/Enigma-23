@@ -78,8 +78,8 @@ router.get("/", ensureLoggedIn(), async function (req, res, next) {
   try {
     //to be used for countdown and finish page
     const curDateTime = new Date();
-    const end = new Date("2023-04-25T23:59:59+05:30");
-    const start = new Date("2023-03-03T00:34:59+05:30");
+    const end = new Date("2023-03-08T00:00:00+05:30");
+    const start = new Date("2023-03-06T10:00:00+05:30");
     if (curDateTime.getTime() > end.getTime()) {
       return res.render("end", { layout: "play_layout" });
     } else if (curDateTime.getTime() < start.getTime()) {
@@ -191,8 +191,8 @@ router.get("/", ensureLoggedIn(), async function (req, res, next) {
 router.post("/", ensureLoggedIn(), async function (req, res, next) {
   try {
     const curDateTime = new Date();
-    const end = new Date("2023-04-25T23:59:59+05:30");
-    const start = new Date("2023-03-03T00:34:59+05:30");
+    const end = new Date("2023-03-08T00:00:00+05:30");
+    const start = new Date("2023-03-06T10:00:00+05:30");
     console.log(curDateTime.getTime() < start.getTime());
     if (curDateTime.getTime() > end.getTime()) {
       return res.render("end", { layout: "play_layout" });
@@ -242,8 +242,8 @@ router.get("/practice", ensureLoggedIn(), async function (req, res, next) {
   try {
     //to be used for countdown and finish page
     const curDateTime = new Date();
-    const end = new Date("2023-04-25T23:59:59+05:30");
-    const start = new Date("2023-03-03T00:34:59+05:30");
+    const end = new Date("2023-03-08T00:00:00+05:30");
+    const start = new Date("2023-03-06T10:00:00+05:30");
     //console.log(curDateTime.getTime() < start.getTime());
     if (curDateTime.getTime() < start.getTime()) {
       return res.render("", { layout: "countdown" });
@@ -317,8 +317,8 @@ router.get("/practice", ensureLoggedIn(), async function (req, res, next) {
 router.post("/practice", ensureLoggedIn(), async function (req, res, next) {
   try {
     const curDateTime = new Date();
-    const end = new Date("2023-04-25T23:59:59+05:30");
-    const start = new Date("2023-03-03T00:34:59+05:30");
+    const end = new Date("2023-03-08T00:00:00+05:30");
+    const start = new Date("2023-03-06T10:00:00+05:30");
 
     if (curDateTime.getTime() < start.getTime()) {
       return res.render("", { layout: "countdown" });
