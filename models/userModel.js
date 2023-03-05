@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
       type: Number,
     },
     level: {
-      type: Array,
+      type: Number,
     },
     certificateName: {
       type: String,

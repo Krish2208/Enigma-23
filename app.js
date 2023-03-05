@@ -45,8 +45,16 @@ hbs.handlebars.registerHelper({
   inc: (v) => v+1
 });
 
-let redisClient = redis.createClient({
-  url: `redis://:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOSTNAME}:${process.env.REDIS_PORT}`,
+// let redisClient = redis.createClient({
+//   url: `redis://:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOSTNAME}:${process.env.REDIS_PORT}`,
+//   legacyMode: true
+// });
+const redisClient = redis.createClient({
+  password: process.env.REDIS_PASSWORD,
+  socket: {
+      host: 'redis-12585.c212.ap-south-1-1.ec2.cloud.redislabs.com',
+      port: 12585
+  },
   legacyMode: true
 });
 
@@ -59,7 +67,7 @@ redisClient.on('connect', function (err) {
   console.log('Connected to redis successfully');
 });
 
-let RedisStore = connectRedis(expressSession)
+let RedisStore = connectRedis(expressSession);
 app.disable('x-powered-by');
 app.use(flash());
 app.use(logger('dev'));
@@ -69,10 +77,9 @@ app.use(cookieParser());
 app.use(
   expressSession({
     store: new RedisStore({ client: redisClient }),
-    secret: process.env.EXPRESS_SECRET,
+    secret: 'secret',
     resave: false,
-    saveUninitialized: true,
-    name: "SessionCookie"
+    saveUninitialized: true
   })
 );
 
@@ -106,10 +113,10 @@ app.use(function (err, req, res, next) {
   res.render('',{layout:'error'});
 });
 
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
-// app.listen(PORT, () => {
-//   console.log(`Listening to PORT ${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Listening to PORT ${PORT}`);
+});
 
-module.exports = app;
+// module.exports = app;

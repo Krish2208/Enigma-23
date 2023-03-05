@@ -1,109 +1,119 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/play_screen.css'>
-<link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet">
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  media="screen"
+  href="/stylesheets/play_screen.css"
+/>
+<link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet" />
 <script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
 
 <body>
-    <section id="tabs" class="project-tab">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav>
-                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                            {{#if active.q1}}
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
-                                href="#nav-{{ q1.q_no }}" role="tab" aria-controls="nav-home" aria-selected="true">{{
-                                q1.q_no }} {{#if done.q1}}<i class="fa fa-check" style="color: green;"></i>{{/if}}</a>
-                            <a class="nav-item nav-link {{#if last}} disabled {{/if}} {{#if done.q2}} disabled {{/if}}"
-                                id="nav-profile-tab" data-toggle="tab" href="#nav-{{ q2.q_no }}" role="tab"
-                                aria-controls="nav-profile" aria-selected="false">{{ q2.q_no }} {{#if done.q2}}<i
-                                    class="fa fa-check" style="color: green;"></i>{{/if}}</a>
-                            {{else}}
-                            <a class="nav-item nav-link {{#if done.q1}} disabled {{/if}}" id="nav-home-tab"
-                                data-toggle="tab" href="#nav-{{ q1.q_no }}" role="tab" aria-controls="nav-home"
-                                aria-selected="true">{{ q1.q_no }} {{#if done.q1}}<i class="fa fa-check"
-                                    style="color: green;"></i>{{/if}}</a>
-                            <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
-                                href="#nav-{{ q2.q_no }}" role="tab" aria-controls="nav-profile"
-                                aria-selected="false">{{ q2.q_no }} {{#if done.q2}}<i class="fa fa-check"
-                                    style="color: green;"></i>{{/if}}</a>
-                            {{/if}}
-                        </div>
-                    </nav>
-                    <br>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade {{#if active.q1}}show active{{/if}}" id="nav-{{ q1.q_no }}"
-                            role="tabpanel" aria-labelledby="nav-home-tab">
-                            <center>
-                                <p id="question_description">
-                                    {{#if (eq q1.link '#')}}
-                                    <a id="text_hyper">
-                                        {{q1.q_des}}
-                                    </a>
-                                    {{else}}
-                                    <a href="{{q1.link}}" id="text_hyper" target='_blank'>{{q1.q_des}}</a>
-                                    {{/if}}
-                                </p>
-                                <!-- {{ q1.comment }} -->
-                                <div class="img_container">
-                                    <div class="imagebox">
-                                        {{#if (eq q1.res1_type 'youtube')}}
-                                        <iframe width="420" height="345" src="{{q1.res1_link}}"></iframe>
-                                        {{else if (eq q1.res1_type 'video')}}
-                                        <video width="320" height="240" controls>
-                                            <source src="{{q1.res1_link}}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                        {{else if (eq q1.res1_type 'audio')}}
-                                        <audio controls>
-                                            <source src="{{q1.res1_link}}" type="audio/mpeg">
-                                            Your browser does not support the audio element.
-                                        </audio>
-                                        {{else}}
-                                            {{#if (eq q1.res1_split 'true')}}
-                                                <div style="width: 200px; height: 300px; overflow: hidden;">
-                                                    <img src="{{ q1.res1_link }}" width="400px" height="300px">
-                                                </div>
-                                            {{else}}
-                                                <img src="{{ q1.res1_link }}" width="{{q1.res1_width}}"
-                                                    height="{{q1.res1_height}}">
-                                            {{/if}}
-                                        {{/if}}
-                                    </div>
-                                    {{#if (eq q1.res2_present true)}}
-                                    <br>
-                                    <div class="imagebox">
-                                        {{#if (eq q1.res2_type 'youtube')}}
-                                        <iframe width="420" height="345" src="{{q1.res2_link}}"></iframe>
-                                        {{else if (eq q1.res2_type 'video')}}
-                                        <video width="320" height="240" controls>
-                                            <source src="{{q1.res2_link}}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                        {{else if (eq q1.res2_type 'audio')}}
-                                        <audio controls>
-                                            <source src="{{q1.res2_link}}" type="audio/mpeg">
-                                            Your browser does not support the audio element.
-                                        </audio>
-                                        {{else}}
-                                        <img src="{{ q1.res2_link }}" width="{{q1.res2_width}}"
-                                            height="{{q1.res2_height}}">
-                                        {{/if}}
-                                    </div>
-                                    {{/if}}
-                                </div>
-                            </center>
-                            <br>
-                            <form>
-                                <center>
-                                    <input type="text" value="{{ q1.q_no }}" name="qno" hidden>
-                                    <input type="text" class="input" name="answer" autocomplete="off">
-                                    <br>
-                                    <input type="submit" name="submit" class="submit_custom">
-                                </center>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade {{#if (ne active.q1 true) }}show active{{/if}}" id="nav-{{ q2.q_no }}"
+  <section id="tabs" class="project-tab">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 quiz-bar">
+          <br />
+          <center>
+            <p id="question_description">
+              {{#if (eq q1.link "#")}}
+                <a id="text_hyper">
+                  {{q1.q_no}}
+                  {{q1.q_des}}
+                </a>
+              {{else}}
+                <a
+                  href="{{q1.link}}"
+                  id="text_hyper"
+                  target="_blank"
+                >Q{{q1.q_no}}: {{q1.q_des}}</a>
+              {{/if}}
+            </p>
+            <!-- {{ q1.comment }} -->
+            <div class="img_container">
+              <div class="imagebox">
+                {{#if (eq q1.res1_type "youtube")}}
+                  <iframe
+                    width="420"
+                    height="345"
+                    src="{{q1.res1_link}}"
+                  ></iframe>
+                {{else if (eq q1.res1_type "video")}}
+                  <video width="320" height="240" controls>
+                    <source src="{{q1.res1_link}}" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                {{else if (eq q1.res1_type "audio")}}
+                  <audio controls>
+                    <source src="{{q1.res1_link}}" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                {{else}}
+                  {{#if (eq q1.res1_split "true")}}
+                    <div style="width: 200px; height: 300px; overflow: hidden;">
+                      <img
+                        src="{{q1.res1_link}}"
+                        width="400px"
+                        height="300px"
+                      />
+                    </div>
+                  {{else}}
+                    <img
+                      src="{{q1.res1_link}}"
+                      width="{{q1.res1_width}}"
+                      height="{{q1.res1_height}}"
+                    />
+                  {{/if}}
+                {{/if}}
+              </div>
+              {{#if (eq q1.res2_present true)}}
+                <br />
+                <div class="imagebox">
+                  {{#if (eq q1.res2_type "youtube")}}
+                    <iframe
+                      width="420"
+                      height="345"
+                      src="{{q1.res2_link}}"
+                    ></iframe>
+                  {{else if (eq q1.res2_type "video")}}
+                    <video width="320" height="240" controls>
+                      <source src="{{q1.res2_link}}" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  {{else if (eq q1.res2_type "audio")}}
+                    <audio controls>
+                      <source src="{{q1.res2_link}}" type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  {{else}}
+                    <img
+                      src="{{q1.res2_link}}"
+                      width="{{q1.res2_width}}"
+                      height="{{q1.res2_height}}"
+                    />
+                  {{/if}}
+                </div>
+              {{/if}}
+            </div>
+          </center>
+          <br />
+          <form>
+            <center>
+              <input type="text" value="{{q1.q_no}}" name="qno" hidden />
+              <input
+                type="text"
+                class="input"
+                name="answer"
+                autocomplete="off"
+              />
+              <br />
+              <input type="submit" name="submit" class="submit_custom" />
+            </center>
+          </form>
+        </div>
+        {{!-- <div class="tab-pane fade {{#if (ne active.q1 true) }}show active{{/if}}" id="nav-{{ q2.q_no }}"
                             role="tabpanel" aria-labelledby="nav-profile-tab">
                             <center>
                                 <p id="question_description">
@@ -167,16 +177,15 @@
                                     <input type="submit" name="submit" class="submit_custom">
                                 </center>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div id="overlay">
-        <div class="cv-spinner">
-            <span class="spinner"></span>
-        </div>
+                        </div> --}}
+
+      </div>
     </div>
+  </section>
+  <div id="overlay">
+    <div class="cv-spinner">
+      <span class="spinner"></span>
+    </div>
+  </div>
 
 </body>

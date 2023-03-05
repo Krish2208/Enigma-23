@@ -18,7 +18,7 @@ module.exports = function (passport) {
                     firstName: profile.name.givenName,
                     lastName: profile.name.familyName,
                     score: 0,
-                    level: [1,2]
+                    level: 1
                 }
 
                 try {
