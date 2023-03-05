@@ -20,18 +20,19 @@
             <p id="question_description">
               {{#if (eq q1.link "#")}}
                 <a id="text_hyper">
-                  {{q1.q_no}}
                   {{q1.q_des}}
+                  <br />{{q1.comment}}
                 </a>
               {{else}}
                 <a
                   href="{{q1.link}}"
                   id="text_hyper"
                   target="_blank"
-                >Q{{q1.q_no}}: {{q1.q_des}}</a>
+                >{{q1.q_des}}
+                  <br />{{q1.comment}}
+                </a>
               {{/if}}
             </p>
-            <!-- {{ q1.comment }} -->
             <div class="img_container">
               <div class="imagebox">
                 {{#if (eq q1.res1_type "youtube")}}

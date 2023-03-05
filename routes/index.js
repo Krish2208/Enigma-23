@@ -3,11 +3,11 @@ const router = express.Router();
 const User = require('../models/userModel');
 const { ensureLoggedIn, ensureLoggedOut } = require('../middleware/auth');
 const QnA = require('../models/qnaModel');
-
 questions = [
   {
     q_no: 1,
-    q_des: "Question 1",
+    q_des: "Question 0",
+    link: "#",
     res1_width: "600",
     res1_height: "225",
     res1_link: "https://i.ibb.co/b7tbF2Z/image.png",
@@ -16,7 +16,8 @@ questions = [
   },
   {
     q_no: 2,
-    q_des: "Question 2",
+    q_des: "Question 1",
+    link: "#",
     res1_width: "600",
     res1_height: "225",
     res1_link: "https://i.ibb.co/LYpZv5v/1.png",
@@ -29,47 +30,18 @@ questions = [
   },
   {
     q_no: 3,
-    q_des: "Question 3",
-    link: "https://i.ibb.co/M1bJBx0/3-1.png",
-    res1_width: "150",
-    res1_height: "280",
-    res1_link: "https://i.ibb.co/4g6j58c/3-2.png",
-    res1_type: "image",
-    res2_present: true,
-    res2_width: "180",
-    res2_height: "300",
-    res2_link: "https://i.ibb.co/MVSC7Nb/3-3.png",
-    res2_type: "image",
-  },
-];
-answer = ["enigma", "harbhajan singh", "ai182"];
-close_ans = [["enigm", "engima"], ["harbhajan", "harbhajan sing", "harbajan singh"], ["ai 182", "air india", "air india 182", "flight 182"]];questions = [
-  {
-    q_no: 1,
-    q_des: "Question 1",
-    res1_width: "600",
-    res1_height: "225",
-    res1_link: "https://i.ibb.co/b7tbF2Z/image.png",
+    q_des: "Question 2",
+    link: "#",
+    res1_width: "280",
+    res1_height: "150",
+    res1_link: "https://i.ibb.co/fvXG8Yc/2.png",
     res1_type: "image",
     res2_present: false,
   },
   {
-    q_no: 2,
-    q_des: "Question 2",
-    res1_width: "600",
-    res1_height: "225",
-    res1_link: "https://i.ibb.co/LYpZv5v/1.png",
-    res1_type: "image",
-    res2_present: true,
-    res2_width: "170",
-    res2_height: "200",
-    res2_link: "https://i.ibb.co/1XzfR2M/1-1.png",
-    res2_type: "image",
-  },
-  {
-    q_no: 3,
+    q_no: 4,
     q_des: "Question 3",
-    link: "https://i.ibb.co/M1bJBx0/3-1.png",
+    link: "https://i.ibb.co/kM5Jr38/3-1.png",
     res1_width: "150",
     res1_height: "280",
     res1_link: "https://i.ibb.co/4g6j58c/3-2.png",
@@ -81,27 +53,152 @@ close_ans = [["enigm", "engima"], ["harbhajan", "harbhajan sing", "harbajan sing
     res2_type: "image",
   },
   {
-      q_no: 4,
-      q_des: "51.6, 17.2, integrate the coordinates into the price. 62442 becomes the ticket number",
-      res1_width: "150",
-      res1_height: "280",
-      res1_link: "https://i.ibb.co/D1tgPCk/4.png",
-      res1_type: "image",
-      res2_present: false,
-    },
-    {
-      q_no: 5,
-      q_des: "Question 5",
-      res1_width: "180",
-      res1_height: "400",
-      res1_link: "https://i.ibb.co/xYq0j1S/5.png",
-      res1_type: "image",
-      res2_present: false,
-    },
+    q_no: 5, // Mukden Incident
+    q_des: "Question 4",
+    link: "#",
+    res1_width: "150",
+    res1_height: "280",
+    res1_link: "https://drive.google.com/u/1/uc?id=1-G1uNEDbLxfy3IUQ6O6_ifteseOigGw2&export=download",
+    res1_type: "video",
+    res2_present: false,
+  },
+  {
+    q_no: 6,
+    q_des: "Question 5",
+    link: "#",
+    res1_width: "250",
+    res1_height: "400",
+    res1_link: "https://i.ibb.co/BnDBZcv/CN104030365A.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 7,
+    q_des: "Question 6",
+    link: "#",
+    res1_width: "600",
+    res1_height: "380",
+    res1_link: "https://i.ibb.co/CHj71LY/6.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 8,
+    q_des: "Question 7",
+    link: "#",
+    link: "https://www.youtube.com/watch?v=PiMlVjdG25U",
+    res1_width: "400",
+    res1_height: "400",
+    res1_link: "https://i.ibb.co/RjqWzcZ/8.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 9,
+    q_des: "Question 8: Why does it happen in love? (disclaimer copied this question)",
+    link: "#",
+    res1_width: "600",
+    res1_height: "380",
+    res1_link: "https://i.ibb.co/CmTt4fW/9.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 10,
+    q_des: "Question 9",
+    link: "#",
+    res1_width: "600",
+    res1_height: "225",
+    res1_link: "https://i.ibb.co/b7tbF2Z/image.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 11,
+    q_des: "Question 10",
+    link: "#",
+    res1_width: "450",
+    res1_height: "450",
+    res1_link: "https://i.ibb.co/HtYwjDY/11.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 12,
+    q_des: "Question 11",
+    link: "#",
+    res1_width: "400",
+    res1_height: "250",
+    res1_link: "https://i.ibb.co/vBM3SBL/12.png",
+    res1_type: "image",
+    res2_present: true,
+    res2_width: "350",
+    res2_height: "200",
+    res2_link: "https://i.ibb.co/XYZ8FvX/12-1.png",
+    res2_type: "image",
+  },
+  {
+    q_no: 13,
+    q_des: "Question 12",
+    link: "https://i.ibb.co/tP7NWFz/13-2.png",
+    res1_width: "400",
+    res1_height: "250",
+    res1_link: "https://i.ibb.co/fSGVvcM/13.png",
+    res1_type: "image",
+    res2_present: true,
+    res2_width: "400",
+    res2_height: "200",
+    res2_link: "https://i.ibb.co/xsg6bTB/13-1.png",
+    res2_type: "image",
+  },
+  {
+    q_no: 14,
+    q_des: "pgpcjestyr pwdp nly hlte, mfe esp dplcns qzc rzo nlyyze hlte, lyo wzgp zyp lyzespc",
+    comment: "gsilfts gsv slob tziwvm lu vwvm",
+    link: "#",
+    res1_width: "400",
+    res1_height: "150",
+    res1_link: "https://i.ibb.co/myRbR1s/F7IB.png",
+    res1_type: "image",
+    res2_present: true,
+    res2_width: "250",
+    res2_height: "400",
+    res2_link: "https://i.ibb.co/w0zcsY6/14.png",
+    res2_type: "image",
+  },
 ];
-answer = ["enigma", "harbhajansingh", "ai182", "harrypotter", "hanniballecter"];
-close_ans = [["enigm", "engima"], ["harbhajan", "harbhajan sing", "harbajan singh", "harbhajan singh"], ["ai 182", "air india", "air india 182", "flight 182"], ["harry", "potter", "harry potter"], ['hannibal lecter', 'hannibal', 'lecter']];
-
+answer = [
+  "enigma",
+  "harbhajansingh",
+  "harrypotter",
+  "ai182",
+  "mukdenincident",
+  "hanniballecter",
+  "matrix",
+  "thebigbangtheory",
+  "dasavatharam",
+  "dejavu",
+  "stephencurry",
+  "michelangelo",
+  "skullandbones",
+  "jaigurudeva",
+];
+close_ans = [
+  ["enigm", "engima"],
+  ["harbhajan", "harbhajan sing", "harbajan singh", "harbhajan singh"],
+  ["harry", "potter", "harry potter"],
+  ["ai 182", "air india 182", "flight 182"],
+  ["mukden", "mukden incident"],
+  ["hannibal lecter", "hannibal", "lecter"],
+  ["matrix", "the matrix"],
+  ["the big bang theory", "big bang theory", "bbt", "tbbt"]
+  ["dasavathaaram", "dashavatharam"],
+  ["deja vu"],
+  ["stephen curry", "stephen", "steph curry"]
+  ["michelanglo", "michelangalo"],
+  ["skull and bones", "skull and bone", "skull & bones", "skull & bone"]
+  ["jai guru deva", "jay guru deva", "jaygurudeva"]
+];
 
 function get_rank(email, onlyRank) {
   return new Promise(function (resolve, reject) {
@@ -233,7 +330,7 @@ router.get('/profile', ensureLoggedIn(), async function (req, res, next) {
 // // route to load questions in database
 // // requires questions.js file,answer[],close_ans[]
 router.get('/loadquestions', async function (req, res, next) {
-  const noOfQuestions = 5;
+  const noOfQuestions = 14;
   for (i = 0; i < noOfQuestions; i++) {
     const newQuestion={
       ...questions[i],
