@@ -113,10 +113,10 @@ app.use(function (err, req, res, next) {
   res.render('',{layout:'error'});
 });
 
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => {
-  console.log(`Listening to PORT ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Listening to PORT ${PORT}`);
+// });
 
-// module.exports = app;
+module.exports = app;
