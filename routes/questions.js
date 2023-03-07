@@ -194,3 +194,5 @@ close_ans = [
   ["skull and bones", "skull and bone", "skull & bones", "skull & bone"]
   ["jai guru deva", "jay guru deva", "jaygurudeva"]
 ];
+
+
