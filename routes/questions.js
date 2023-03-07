@@ -196,3 +196,75 @@ close_ans = [
 ];
 
 
+questions = [
+  {
+    q_no: 15,
+    q_des: "Question 14",
+    link: "#",
+    res1_width: "500",
+    res1_height: "240",
+    res1_link: "https://i.ibb.co/Y03GcgR/15.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 16,
+    q_des: "Question 15",
+    link: "#",
+    res1_width: "400",
+    res1_height: "400",
+    res1_link: "https://i.ibb.co/s5vyhMy/16.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 17,
+    q_des: "Question 16",
+    link: "#",
+    res1_width: "500",
+    res1_height: "240",
+    res1_link: "https://i.ibb.co/fFcJg3Z/17.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 18,
+    q_des: "Question 17",
+    link: "#",
+    res1_width: "225",
+    res1_height: "300",
+    res1_link: "https://i.ibb.co/FD11Y1B/18.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+  {
+    q_no: 19,
+    q_des: "Question 18",
+    link: "#",
+    res1_width: "400",
+    res1_height: "310",
+    res1_link: "https://i.ibb.co/T1HwYcP/19.png",
+    res1_type: "image",
+    res2_present: false,
+  },
+];
+answer = [
+  "splitwise",
+  "cid",
+  "voldemort",
+  "spanishinquistion",
+  "ramensteinairshow",
+];
+close_ans = [
+  ["split wise", "split-wise"],
+  ["CID", "C I D", "c.i.d.", "C.I.D."],
+  ["Voldemort", "voldmort"],
+  ["Spanish Inquisition", "spanish inquisition", "spanishenquistion"],
+  [
+    "Ramenstein Airshow",
+    "ramenstein airshow",
+    "ramensteinairshow",
+    "ramenstein air show",
+    "ramstein",
+  ],
+];
